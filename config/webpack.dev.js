@@ -5,6 +5,8 @@ const common = require("./webpack.common.js");
 module.exports = merge(common, {
   // Set the mode to development or production
   mode: "development",
+  // Control how source maps are generated
+  devtool: "inline-source-map",
   // webpack 5 comes with devServer which loads in development mode
   devServer: {
     port: 3000,
