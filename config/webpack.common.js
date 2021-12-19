@@ -7,7 +7,9 @@ module.exports = {
   // Where files should be sent once they are bundled
   output: {
     path: path.join(__dirname, "/dist"),
-    filename: "index.bundle.js",
+    filename: "[name].[contenthash].js",
+    publicPath: "/",
+    uniqueName: "authentication-app",
   },
   // Rules of how webpack will take our files, complie & bundle them for the browser
   module: {
