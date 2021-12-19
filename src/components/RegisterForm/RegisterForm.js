@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Form,
   Input,
@@ -16,10 +17,12 @@ import { residences, formItemLayout, tailFormItemLayout } from "./constants";
 const { Option } = Select;
 
 const RegisterForm = () => {
+  const navigate = useNavigate();
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
+    navigate("/sign-in");
   };
 
   const prefixSelector = (

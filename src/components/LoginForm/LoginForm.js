@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Form, Input, Checkbox } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import {
@@ -6,9 +7,10 @@ import {
   ForgotPasswordLink,
 } from "./LoginForm.style";
 
-const LoginForm = () => {
+const LoginForm = ({ onSignIn }) => {
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
+    onSignIn();
   };
 
   return (
@@ -57,7 +59,7 @@ const LoginForm = () => {
         <SubmitButton type="primary" htmlType="submit">
           Log in
         </SubmitButton>
-        Or <a href="">register now!</a>
+        Or <Link to="/sign-up">register now!</Link>
       </Form.Item>
     </SignInForm>
   );

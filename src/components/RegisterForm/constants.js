@@ -39,7 +39,7 @@ export const formItemLayout = {
       span: 24,
     },
     sm: {
-      span: 8,
+      span: 4,
     },
   },
   wrapperCol: {

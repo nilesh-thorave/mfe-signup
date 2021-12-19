@@ -6,7 +6,7 @@ export const SubmitButton = styled(Button)`
 `;
 
 export const SignInForm = styled(Form)`
-  max-width: 500px;
+  width: 500px;
 `;
 
 export const ForgotPasswordLink = styled.a`
