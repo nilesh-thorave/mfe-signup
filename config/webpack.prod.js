@@ -1,12 +1,17 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const { merge } = require("webpack-merge");
 const common = require("./webpack.common.js");
 
 module.exports = merge(common, {
   mode: "production",
   devtool: false,
+  output: {
+    filename: "[name].[contenthash].js",
+    publicPath: "/auth/latest/",
+  },
   module: {
     rules: [
       {
@@ -30,6 +35,20 @@ module.exports = merge(common, {
   plugins: [
     new Dotenv({
       path: "./.env",
+    }),
+    new ModuleFederationPlugin({
+      name: "auth",
+      filename: "remoteEntry.js",
+      exposes: {
+        "./AuthApp": "./src/bootstrap",
+      },
+      shared: {
+        antd: "^4.17.2",
+        react: "^17.0.2",
+        "react-dom": "^17.0.2",
+        "react-router-dom": "^6.2.1",
+        "styled-components": "^5.3.3",
+      },
     }),
     // Extracts CSS into separate files
     new MiniCssExtractPlugin({
