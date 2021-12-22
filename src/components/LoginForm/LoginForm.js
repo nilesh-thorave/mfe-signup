@@ -57,7 +57,7 @@ const LoginForm = ({ onSignIn }) => {
 
       <Form.Item>
         <SubmitButton type="primary" htmlType="submit">
-          Log in
+          Sign in
         </SubmitButton>
         Or <Link to="/sign-up">register now!</Link>
       </Form.Item>
